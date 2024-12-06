@@ -1,25 +1,33 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import React from "react";
 import "./App.css";
+import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Header from "./components/header";
 import Sidebar from "./components/Sidebar";
-import Creates from "./components/Creates";
+import CreatePost from "./components/CreatePost";
 import PostList from "./components/PostList";
 import { useState } from "react";
-import PostListProvider from "./store/Postlistprovider";
+import PostListProvider from "./store/post-list-store";
+
 function App() {
-  const [selectedTab, setselectedTab] = useState("Home");
+  const [selectedTab, setSelectedTab] = useState("Home");
+
   return (
     <PostListProvider>
-    <div className="App-container">
-      <Sidebar selectedTab={selectedTab}  setselectedTab={setselectedTab}/>
-      <div className="main-content">
-        <Header />
-        {selectedTab === "Home" ? <PostList /> : <Creates />}
-        <Footer />
+      <div className="app-container">
+        <Sidebar
+          selectedTab={selectedTab}
+          setSelectedTab={setSelectedTab}
+        ></Sidebar>
+        <div className="content">
+          <Header></Header>
+          {selectedTab === "Home" ? (
+            <PostList></PostList>
+          ) : (
+            <CreatePost></CreatePost>
+          )}
+          <Footer></Footer>
+        </div>
       </div>
-    </div>
     </PostListProvider>
   );
 }

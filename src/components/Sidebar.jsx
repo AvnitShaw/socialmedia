@@ -1,12 +1,12 @@
-const Sidebar = ({ selectedTab,setselectedTab }) => {
+const Sidebar = ({ selectedTab, setSelectedTab }) => {
   return (
     <div
-      className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
-      style={{ width: "280px" }}
+      className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar"
+      style={{ width: "180px" }}
     >
       <a
         href="/"
-        className="d-flex align-items-left mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+        className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
       >
         <svg className="bi pe-none me-2" width="40" height="32">
           <use xlinkHref="#bootstrap"></use>
@@ -15,12 +15,18 @@ const Sidebar = ({ selectedTab,setselectedTab }) => {
       </a>
       <hr />
       <ul className="nav nav-pills flex-column mb-auto">
-        <li className="nav-item" onClick={() => setselectedTab("Home")}>
+        <li
+          className="nav-item"
+          onClick={() => {
+            setSelectedTab("Home");
+          }}
+        >
           <a
             href="#"
             className={`nav-link text-white ${
               selectedTab === "Home" && "active"
             }`}
+            aria-current="page"
           >
             <svg className="bi pe-none me-2" width="16" height="16">
               <use xlinkHref="#home"></use>
@@ -28,11 +34,15 @@ const Sidebar = ({ selectedTab,setselectedTab }) => {
             Home
           </a>
         </li>
-        <li className="nav-item" onClick={() => setselectedTab("Creates")}>
+        <li
+          onClick={() => {
+            setSelectedTab("Create Post");
+          }}
+        >
           <a
             href="#"
             className={`nav-link text-white ${
-              selectedTab === "Creates" && "active"
+              selectedTab === "Create Post" && "active"
             }`}
           >
             <svg className="bi pe-none me-2" width="16" height="16">
@@ -88,4 +98,5 @@ const Sidebar = ({ selectedTab,setselectedTab }) => {
     </div>
   );
 };
+
 export default Sidebar;
